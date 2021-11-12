@@ -40,29 +40,11 @@ print(model.summary())
 
 print('Start Traning..')
 
-epochs = None 
-batch_size = None
-verbose = None
-while not epochs:
-    epochs_input = input('Num. of Epochs\n')
-    if epochs_input:
-        epochs = int(epochs_input)
-
-while not batch_size:
-    batch_input = input('Num. of batches\n')
-    if batch_input:
-        batch_size = int(batch_input)
-
-while not verbose:
-    verbose_input = input('Verbose\n')
-    if verbose_input:
-        verbose = int(verbose_input)
-
 history = model.fit(
     X_train, y_train, 
     validation_data=(X_test, y_test), 
-    epochs=epochs, batch_size=batch_size, 
-    verbose=verbose
+    epochs=20, batch_size=64, 
+    verbose=0
 ).history
 
 # write the data to json file 
