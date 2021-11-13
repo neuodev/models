@@ -20,13 +20,14 @@ def read_image_from_url(url):
     with urlopen(url) as request:
         img_array = np.asarray(bytearray(request.read()), dtype=np.uint8)
     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-    return cv2.cvtColor(img, cv2.COLOR_BGR2RGB) 
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+    return  cv2.resize(img, (224, 224))
 
 image = read_image_from_url(image_input)
 # reshape data for the model
 image = image.reshape((1, image.shape[0], image.shape[1], image.shape[2]))
 
-# prepare the image for the VGG model
+# # prepare the image for the VGG model
 image = preprocess_input(image)
 
 # Making predictions
@@ -39,12 +40,3 @@ print('decode_predictions: ', label)
 label = label[0][0]
 # print the classification
 print('%s (%.2f%%)' % (label[1], label[2]*100))
-
-
-
-
-
-
-img = read_image_from_url(image_urls[0])
-plt.imshow(img)
-plt.show()
