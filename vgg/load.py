@@ -5,7 +5,12 @@ from tensorflow.keras.preprocessing.image import load_img, img_to_array
 model = VGG16()
 print(model.summary())
 
-image = load_img('mug.jpeg', target_size=(224, 224))
+image_path = 'mug.jpeg'
+image_input = input('Enter Image Url: \n')
+if image_input:
+    image_path = image_input
+
+image = load_img(image_path, target_size=(224, 224))
 image = img_to_array(image)
 
 # reshape data for the model
