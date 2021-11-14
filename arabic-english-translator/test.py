@@ -139,9 +139,41 @@ testX = encode_sequences(ara_tokenizer, ara_length, test[:, 0])
 testY = encode_sequences(eng_tokenizer, eng_length, test[:, 1])
 testY = encode_output(testY, eng_vocab_size)
 
-model = load_model('model.h5')
-preds = model.predict(testX[:10])
-print(preds.shape)
+# model = load_model('model.h5')
+# preds = model.predict(testX[:10])
+# print(preds.shape)
 
-save_clean_data(preds, 'preds.pkl')
-print('Preds Saved /download/arabic-english-translator/preds.pkl')
+# save_clean_data(preds, 'preds.pkl')
+# print('Preds Saved /download/arabic-english-translator/preds.pkl')
+
+preds = load_clean_data('preds.pkl')
+
+# generate target given source sequence
+def predict_sequence( tokenizer,):
+	prediction = preds[0]
+	integers = [np.argmax(vector) for vector in prediction]
+	target = list()
+	for i in integers:
+		word = word_for_id(i, tokenizer)
+		if word is None:
+			break
+		target.append(word)
+	return ' '.join(target)
+
+# evaluate the skill of the model
+def evaluate_model( tokenizer, sources, raw_dataset):
+	actual, predicted = list(), list()
+	for i, source in enumerate(sources):
+		# translate encoded source text
+		source = source.reshape((1, source.shape[0]))
+		translation = predict_sequence(tokenizer)
+		raw_target, raw_src = raw_dataset[i]
+		if i < 10:
+			print('src=[%s], target=[%s], predicted=[%s]' % (raw_src, raw_target, translation))
+		actual.append([raw_target.split()])
+		predicted.append(translation.split())
+        # print("actual", actual)
+        # print("predicted", predicted)
+
+
+evaluate_model(eng_tokenizer, testX[:10], test[:10])
