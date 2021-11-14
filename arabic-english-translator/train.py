@@ -158,30 +158,3 @@ history = model.fit(trainX, trainY, epochs=100, batch_size=64, validation_data=(
 with open('history.json', 'wb') as f:
     f.write(json.dumps(history))
 
-def evaludate_on_test(idx):
-    print(test[idx])
-    ara_sent = testX[idx]
-    words = []
-    for token in ara_sent:
-        word = word_for_id(token, ara_tokenizer)
-        if word:
-            words.append(word)
-    print("This: \n", ' '.join(words) , "\nEqual This\n", ara_sent)
-    preds = model.predict(ara_sent.reshape(1, len(ara_sent)))
-
-    integers = [np.argmax(vector) for vector in preds[0]]
-    print(integers)
-
-    target = []
-
-    for i in integers:
-        word = word_for_id(i, eng_tokenizer)
-        if word:
-            target.append(word)
-    target_sent = ' '.join(target)
-    print(target_sent)
-    return target_sent
-
-# See the performance on the test data
-for i in range(1, 100, step=10):
-    evaludate_on_test(i)
