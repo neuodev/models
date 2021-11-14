@@ -43,3 +43,38 @@ My MacBook ------------------> GitHub --------------------------> My Server
    |                          V   |                                     |
    ----<--------<----------<--<---^----<-------<-----------------------<-
 ```
+
+## Process On The Server
+
+Starting from cloning the latest code on GitHub I am runing the traning process on the server
+Normally You will connect to the server using the `Terminal`. Something you will notice that if you closed the
+terminal the traning process will stop!!. A perfect solution to this is to run the traning as a `process` on the server
+this means that the traning will run on the backend and continue running even if you closed the terminal.
+A great tool for this is [PM2](https://pm2.keymetrics.io/docs/usage/quick-start/). It jsut works!!
+it is a `npm` package you need to have `nodejs` and `npm` installed in your server
+You install it by..
+
+```bash
+npm install pm2@latest -g
+```
+
+You will be able to use it from the terminal
+
+To perform a traning
+
+```bash
+pm2 start "python3 train.py"
+```
+
+And It will start the traning on the backend
+To see the current processes just type
+
+```bash
+pm2 list
+```
+
+To see the logs of the traning process
+
+```bash
+pm2 logs
+```
