@@ -27,11 +27,11 @@ root
 After generating an **idea** (like: `Arabic-English` translator) and getting the right dataset
 
 1. Start exploring the data in my local machine
-2. Build _basic model_ on a subset of the dataset. I tune the hyperparameters until I start getting promising results
+2. Build _basic model_ on a subset of the dataset. I tune the hyperparameters until I start getting **promising** results
 3. Push the code to GitHub and clone it to my server in which I can run **intensive** training for the current model.
 4. I run the training as a process using `PM2` library, leave it until it done traning.
 5. `train.py` always saves the model into the same directory as `model.h5` also the history as `history.json`
-6. I push the code from my server to GitHub, I clone it to my local to perform some perdictions on the model and to visualize the **learning curve**
+6. `model.h5` can be very very big and doesn't make any sense to push it to GitHub and that why I created a small `server` -- see blew -- , I clone it to my local to perform some perdictions on the model and to visualize the **learning curve**
 7. I repate the whole process again with more tuning to the hyperparameters
 8. I have a background in **web development** so I may expand the idea later to build a web app that put this model into **production**
    I am using `Django` or `Flask` as my backend and `Reactjs` ad my frontend. I use `tailwindcss` for styling
