@@ -158,3 +158,6 @@ history = model.fit(trainX, trainY, epochs=100, batch_size=64, validation_data=(
 with open('history.json', 'wb') as f:
     f.write(json.dumps(history))
 
+# Save the model 
+model.save('model.h5')
+print('Model Saved.')
