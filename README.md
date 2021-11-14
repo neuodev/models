@@ -116,4 +116,4 @@ and it has this
 4.  based on NYC1 city
 5.  Running Ubuntu 20.04 (LTS) x64
 
-I can leave it on training the hole night!!
+I can leave it on training the whole night!!
