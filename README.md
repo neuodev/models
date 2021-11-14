@@ -62,6 +62,7 @@ Download Endpoint: `/downlaod/:model/:filename`
 
 **Note:**
 `mode.h5` is stored in a _binary format_ to download it you need to use a tool like `curl`
+
 Example:
 downlaod the traned model in the same working direcotry with the name `mymodel.h5`
 
