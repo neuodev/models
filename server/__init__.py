@@ -1,8 +1,7 @@
 import os
 
 from flask import Flask
-from . import submit, download
-from . import utils
+from . import download
 
 def create_app(test_config=None):
     # create and configure the app
