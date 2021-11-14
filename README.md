@@ -31,9 +31,10 @@ After generating an **idea** (like: `Arabic-English` translator) and getting the
 3. Push the code to GitHub and clone it to my server in which I can run **intensive** training for the current model.
 4. I run the training as a process using `PM2` library, leave it until it done traning.
 5. `train.py` always saves the model into the same directory as `model.h5` also the history as `history.json`
-6. `model.h5` can be very very big and doesn't make any sense to push it to GitHub and that why I created a small `server` -- see blew -- , I clone it to my local to perform some perdictions on the model and to visualize the **learning curve**
-7. I repate the whole process again with more tuning to the hyperparameters
-8. I have a background in **web development** so I may expand the idea later to build a web app that put this model into **production**
+6. `model.h5` can be very very big and doesn't make any sense to push it to GitHub and that why I created a small `server` -- see blew ,
+7. I clone it again to my local to perform some perdictions on the model and to visualize the **learning curve**
+8. I repate the whole process again with more tuning to the hyperparameters
+9. I have a background in **web development** so I may expand the idea later to build a web app that put this model into **production**
    I am using `Django` or `Flask` as my backend and `Reactjs` ad my frontend. I use `tailwindcss` for styling
 
 ```bash
@@ -42,6 +43,23 @@ My MacBook ------------------> GitHub --------------------------> My Server
    |                          |   |                                     |
    |                          V   |                                     |
    ----<--------<----------<--<---^----<-------<-----------------------<-
+```
+
+## Why Not to include the tranined models
+
+trained models can be very very big due to huge number of weights that the model has to remember. But at the end of the day I want the model to on my local machine so I can _evaludate_ the performance and make some predictions.
+That why I create a`Flask server` directory it has an API endpoint in which you can include the path to the file you want to download and you can start download it into you machine
+
+#### To run the server
+
+```bash
+python3 run.py # to run it as a process on the backend of you remote server `pm2 start "python3 run.py"`
+```
+
+```
+/downlaod/:model/:filename
+# model: is the name of the models included in the repo like `vgg, cifar10`
+# filename: is the name of the actual file in the model directory it can be `mode.h5`, `history.json`
 ```
 
 ## Process On The Server
@@ -79,7 +97,7 @@ To see the logs of the traning process
 pm2 logs
 ```
 
-# Server
+# Remote Server
 
 I dont' need a crazy server to run the traning. I am using a server from **Digital ocean** to berform the traning
 and it has this
