@@ -153,10 +153,11 @@ model = define_model(ara_vocab_size, eng_vocab_size, ara_length, eng_length, 256
 model.compile(optimizer='adam', loss='categorical_crossentropy')
 # summarize defined model
 print(model.summary())
-history = model.fit(trainX, trainY, epochs=100, batch_size=64, validation_data=(testX, testY), verbose=1).history
+epochs=100
+history = model.fit(trainX, trainY, epochs=epochs, batch_size=64, validation_data=(testX, testY), verbose=1).history
 
 # Save history for later visualization
-with open('history.json', 'w') as f:
+with open(f'history-{epochs}.json', 'w') as f:
     f.write(json.dumps(history))
 
 # Save the model 
