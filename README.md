@@ -78,3 +78,16 @@ To see the logs of the traning process
 ```bash
 pm2 logs
 ```
+
+# Server
+
+I dont' need a crazy server to run the traning. I am using a server from **Digital ocean** to berform the traning
+and it has this
+
+1.  8 GB Memory
+2.  4 Intel vCPUs
+3.  160 GB Disk
+4.  based on NYC1 city
+5.  Running Ubuntu 20.04 (LTS) x64
+
+I can leave it on training the hole night
