@@ -2,3 +2,6 @@ logs
 datasets
 .DS_Store
 __pycache__
+model.h5
+.ipynb_checkpoints
+preds.pkl
