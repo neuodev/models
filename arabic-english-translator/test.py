@@ -140,7 +140,7 @@ testY = encode_sequences(eng_tokenizer, eng_length, test[:, 1])
 testY = encode_output(testY, eng_vocab_size)
 
 model = load_model('model.h5')
-preds = model.predict(testX)
+preds = model.predict(testX[:10])
 print(preds.shape)
 
 save_clean_data(preds, 'preds.pkl')
