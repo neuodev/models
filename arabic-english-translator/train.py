@@ -115,11 +115,11 @@ for i in range(20):
 raw_dataset = cleaned_pairs
 
 n_sentences = 10000
-dataset = raw_dataset[:n_sentences, :]
+dataset = raw_dataset
 # random shuffle
 np.random.shuffle(dataset)
 # Split data 
-train, test = dataset[:9000], dataset[9000:]
+train, test = dataset[:10000], dataset[10000:]
 
 print(train.shape, test.shape)
 
