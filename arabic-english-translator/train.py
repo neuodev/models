@@ -114,8 +114,9 @@ for i in range(20):
 
 raw_dataset = cleaned_pairs
 
-n_sentences = 10000
-dataset = raw_dataset
+n_sentences = 12000
+dataset = raw_dataset[:n_sentences, :]
+print(dataset.shape)
 # random shuffle
 np.random.shuffle(dataset)
 # Split data 
@@ -134,8 +135,8 @@ ara = dataset[:, 0]
 ara_tokenizer = create_tokenizer(ara)
 ara_vocab_size = len(ara_tokenizer.word_index) + 1
 ara_length = max_len(ara)
-print('aralish Vocabulary Size: %d' % ara_vocab_size)
-print('aralish Max Larath: %d' % (ara_length))
+print('Arabic Vocabulary Size: %d' % ara_vocab_size)
+print('Arabic Max Larath: %d' % (ara_length))
 
 # prepare training data
 trainX = encode_sequences(ara_tokenizer, ara_length, train[:, 0])
