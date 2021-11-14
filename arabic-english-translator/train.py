@@ -103,7 +103,7 @@ def word_for_id(integer, tokenizer):
             return word
     return None
 
-filename = 'ara.txt'
+filename = 'data.txt'
 doc = load_doc(filename)
 pairs = ara_eng(doc)
 cleaned_pairs = clean_text(pairs)
