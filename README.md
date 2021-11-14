@@ -56,10 +56,17 @@ That why I create a`Flask server` directory it has an API endpoint in which you 
 python3 run.py # to run it as a process on the backend of you remote server `pm2 start "python3 run.py"`
 ```
 
-```
-/downlaod/:model/:filename
-# model: is the name of the models included in the repo like `vgg, cifar10`
-# filename: is the name of the actual file in the model directory it can be `mode.h5`, `history.json`
+Download Endpoint: `/downlaod/:model/:filename`
+**model**: is the name of the models included in the repo like `vgg, cifar10`
+**filename**: is the name of the actual file in the model directory it can be `model.h5`, `history.json`
+
+**Note:**
+`mode.h5` is stored in a _binary format_ to download it you need to use a tool like `curl`
+Example:
+downlaod the traned model in the same working direcotry with the name `mymodel.h5`
+
+```bash
+curl http:0.0.0.0/download/arabic-english-translator/model.h5 --output mymodel.h5
 ```
 
 ## Process On The Server
