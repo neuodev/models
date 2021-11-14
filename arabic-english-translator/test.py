@@ -67,6 +67,7 @@ def save_clean_data(data, filename):
 
 def load_clean_data(filename):
     return load(open(filename, 'rb'))
+
 def create_tokenizer(lines):
     tokenizer = Tokenizer()
     tokenizer.fit_on_texts(lines)
@@ -140,4 +141,7 @@ testY = encode_output(testY, eng_vocab_size)
 
 model = load_model('model.h5')
 preds = model.predict(testX)
-print(preds)
+print(preds.shape)
+
+save_clean_data(preds, 'preds.pkl')
+print('Preds Saved /download/arabic-english-translator/preds.pkl')
