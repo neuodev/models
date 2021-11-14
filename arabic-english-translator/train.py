@@ -155,7 +155,7 @@ print(model.summary())
 history = model.fit(trainX, trainY, epochs=5, batch_size=64, validation_data=(testX, testY), verbose=1).history
 
 # Save history for later visualization
-with open('history.json', 'wb') as f:
+with open('history.json', 'w') as f:
     f.write(json.dumps(history))
 
 # Save the model 
