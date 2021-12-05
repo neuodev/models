@@ -100,7 +100,7 @@ def load_real_samples(directory):
         print('> Load %s, %d%%' % (image, (i / len(dirs) * 100)))
         all_images.append(img)
         i+=1
-        if i == 5000:
+        if i == 100000:
             break
     X = np.array(all_images)
     print("Dataset Shape: " , X.shape)
@@ -195,7 +195,7 @@ def train(g_model, d_model, gan_model, dataset, latent_dim, n_epochs=100, n_batc
             # update the generator via the discriminator's error
             g_loss = gan_model.train_on_batch(X_gan, y_gan)
             # summarize loss on this batch
-            print('>%d, %d/%d, d1=%.3f, d2=%.3f g=%.3f' %
+            print('> %d, %d/%d, d1=%.3f, d2=%.3f g=%.3f' %
                 (i+1, j+1, bat_per_epo, d_loss1, d_loss2, g_loss))
                 # evaluate the model performance, sometimes
             if (i+1) % 10 == 0:
