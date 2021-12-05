@@ -87,10 +87,12 @@ def define_gan(g_model, d_model):
 # load and prepare training images
 def load_real_samples(directory):
     all_images = list()
-    for image in os.listdir(directory):
+    i = 1
+    dirs = os.listdir(directory)
+    for image in os.listdir(dirs):
         img = pyplot.imread(os.path.join(directory ,image))
         img = cv2.resize(img, dsize=(80, 80))
-        print('> Load %s' % image, img.shape)
+        print('> Load %s, %d%%' % (image, (i / len(dirs) * 100)))
         all_images.append(img)
     X = np.array(all_images)
     print("Dataset Shape: " , X.shape)
