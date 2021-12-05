@@ -17,6 +17,7 @@ from tensorflow.keras.layers import Dropout
 from matplotlib import pyplot
 import os
 import numpy as np
+import cv2
 
 # define the standalone discriminator model
 def define_discriminator(in_shape=(80,80,3)):
@@ -88,6 +89,7 @@ def load_real_samples(directory):
     all_images = list()
     for image in os.listdir(directory):
         img = pyplot.imread(os.path.join(directory ,image))
+        img = cv2.resize(img, (80, 80, 3))
         print('> Load %s' % image, img.shape)
         all_images.append(img)
     X = np.array(all_images)
