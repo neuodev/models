@@ -90,7 +90,7 @@ def define_gan(g_model, d_model):
 # load and prepare training images
 def load_real_samples(directory):
     if os.path.exists(DATASET_FILE):
-        return load(DATASET_FILE)
+        return load(DATASET_FILE)['arr_0']
     all_images = list()
     i = 1
     dirs = os.listdir(directory)
