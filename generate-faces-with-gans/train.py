@@ -211,5 +211,6 @@ g_model = define_generator(latent_dim)
 gan_model = define_gan(g_model, d_model)
 # load image data
 dataset = load_real_samples(directory='./img_align_celeba/img_align_celeba/')
+print('Dataset Loaded: ', dataset.shape)
 # train model
 train(g_model, d_model, gan_model, dataset, latent_dim)
