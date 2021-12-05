@@ -89,7 +89,7 @@ def load_real_samples(directory):
     all_images = list()
     for image in os.listdir(directory):
         img = pyplot.imread(os.path.join(directory ,image))
-        img = cv2.resize(img, (80, 80, 3))
+        img = cv2.resize(img, dsize=(80, 80))
         print('> Load %s' % image, img.shape)
         all_images.append(img)
     X = np.array(all_images)
