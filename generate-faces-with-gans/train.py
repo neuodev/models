@@ -41,7 +41,7 @@ def define_discriminator(in_shape=(80,80,3)):
     model.add(Dropout(0.4))
     model.add(Dense(1, activation='sigmoid'))
     # compile model
-    opt = Adam(lr=0.0002, beta_1=0.5)
+    opt = Adam(learning_rate=0.0002, beta_1=0.5)
     model.compile(loss='binary_crossentropy', optimizer=opt, metrics=['accuracy']) 
     return model
 
@@ -79,7 +79,7 @@ def define_gan(g_model, d_model):
     # add the discriminator
     model.add(d_model)
     # compile model
-    opt = Adam(lr=0.0002, beta_1=0.5) 
+    opt = Adam(learning_rate=0.0002, beta_1=0.5) 
     model.compile(loss='binary_crossentropy', optimizer=opt) 
     return model
 
@@ -88,6 +88,7 @@ def load_real_samples(directory):
     all_images = list()
     for image in os.listdir(directory):
         img = pyplot.imread(os.path.join(directory ,image))
+        print('> Load %s' % image)
         all_images.append(img)
     X = np.array(all_images)
     print("Dataset Shape: " , X.shape)
