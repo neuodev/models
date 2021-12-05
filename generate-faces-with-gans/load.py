@@ -3,7 +3,7 @@ import tensorflow_datasets as tfds
 import matplotlib.pyplot as plt 
 
 datasets = tfds.list_builders()
-ds = tfds.load('cifar10', split='train', download=True)
+ds = tfds.load('cats_vs_dogs', download=True)
 ds = tfds.as_numpy(ds)
 print(ds)
 _, axes = plt.subplots(3, 3, figsize=(20, 20))
