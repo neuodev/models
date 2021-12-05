@@ -89,7 +89,7 @@ def load_real_samples(directory):
     all_images = list()
     i = 1
     dirs = os.listdir(directory)
-    for image in os.listdir(dirs):
+    for image in dirs:
         img = pyplot.imread(os.path.join(directory ,image))
         img = cv2.resize(img, dsize=(80, 80))
         print('> Load %s, %d%%' % (image, (i / len(dirs) * 100)))
