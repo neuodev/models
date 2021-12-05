@@ -3,13 +3,21 @@ import tensorflow_datasets as tfds
 import matplotlib.pyplot as plt 
 
 datasets = tfds.list_builders()
-ds = tfds.load('celeb_a')
+ds = tfds.load('mnist', split='train', download=True)
+ds = tfds.as_numpy(ds)
 print(ds)
-
 _, axes = plt.subplots(3, 3, figsize=(20, 20))
 axes = axes.flatten()
-for i in range(len(axes)):
-    axes[i].imshow(ds['image'][i])
+
+i = 0
+for example in ds:
+    axes[i].imshow(example['image'], cmap='gray_r')
+    axes[i].set_title(example['label'])
     axes[i].axis('off')
+    i+=1
+
+    if i == 9:
+        break
 
 plt.savefig('sample.png')
+
