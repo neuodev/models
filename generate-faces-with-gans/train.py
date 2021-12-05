@@ -100,6 +100,8 @@ def load_real_samples(directory):
         print('> Load %s, %d%%' % (image, (i / len(dirs) * 100)))
         all_images.append(img)
         i+=1
+        if i == 100:
+            break
     X = np.array(all_images)
     print("Dataset Shape: " , X.shape)
     # convert from unsigned ints to floats 
