@@ -88,7 +88,7 @@ def load_real_samples(directory):
     all_images = list()
     for image in os.listdir(directory):
         img = pyplot.imread(os.path.join(directory ,image))
-        print('> Load %s' % image)
+        print('> Load %s' % image, img.shape)
         all_images.append(img)
     X = np.array(all_images)
     print("Dataset Shape: " , X.shape)
