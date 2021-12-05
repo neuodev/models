@@ -19,6 +19,9 @@ import os
 import numpy as np
 import cv2
 
+
+DATASET_FILE = 'data.npz'
+
 # define the standalone discriminator model
 def define_discriminator(in_shape=(80,80,3)):
     model = Sequential()
@@ -86,6 +89,8 @@ def define_gan(g_model, d_model):
 
 # load and prepare training images
 def load_real_samples(directory):
+    if os.path.exists(DATASET_FILE):
+        return load(DATASET_FILE)
     all_images = list()
     i = 1
     dirs = os.listdir(directory)
@@ -94,12 +99,14 @@ def load_real_samples(directory):
         img = cv2.resize(img, dsize=(80, 80))
         print('> Load %s, %d%%' % (image, (i / len(dirs) * 100)))
         all_images.append(img)
+        i+=1
     X = np.array(all_images)
     print("Dataset Shape: " , X.shape)
     # convert from unsigned ints to floats 
     X = X.astype('float32')
     # scale from [0,255] to [-1,1]
     X = (X - 127.5) / 127.5
+    np.savez_compressed(DATASET_FILE, X)
     return X
 
 # select real samples
