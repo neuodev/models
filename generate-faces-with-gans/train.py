@@ -100,7 +100,7 @@ def load_real_samples(directory):
         print('> Load %s, %d%%' % (image, (i / len(dirs) * 100)))
         all_images.append(img)
         i+=1
-        if i == 100:
+        if i == 5000:
             break
     X = np.array(all_images)
     print("Dataset Shape: " , X.shape)
@@ -213,4 +213,4 @@ gan_model = define_gan(g_model, d_model)
 dataset = load_real_samples(directory='./img_align_celeba/img_align_celeba/')
 print('Dataset Loaded: ', dataset.shape)
 # train model
-train(g_model, d_model, gan_model, dataset, latent_dim)
+train(g_model, d_model, gan_model, dataset, latent_dim, n_epochs=200, n_batch=128)
