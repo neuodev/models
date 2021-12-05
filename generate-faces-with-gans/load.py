@@ -3,7 +3,7 @@ import tensorflow_datasets as tfds
 import matplotlib.pyplot as plt 
 
 datasets = tfds.list_builders()
-ds = tfds.load('celeb_a', split='train', shuffle_files=True)
+ds = tfds.load('celeb_a')
 print(ds)
 
 _, axes = plt.subplots(3, 3, figsize=(20, 20))
